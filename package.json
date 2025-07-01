@@ -1,18 +1,15 @@
 {
-  "name": "nodejs-sandbox",
+  "name": "to-do-listbackend-final",
   "version": "1.0.0",
-  "description": "Node.js example server starter project",
-  "license": "MIT",
+  "description": "Backend for To-Do List using Node.js, Express, and MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "Ives van Hoorne",
-  "devDependencies": {
-    "@types/node": "^22.5.5",
-    "nodemon": "^3.1.5"
-  },
+  "author": "Yash Shinde",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "3.0.2",
     "cors": "2.8.5",
@@ -20,5 +17,9 @@
     "express": "5.1.0",
     "jsonwebtoken": "9.0.2",
     "mongoose": "8.16.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "nodemon": "^3.1.5"
   }
 }
