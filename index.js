@@ -13,8 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI);
-  })
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -52,6 +52,11 @@ const auth = (req, res, next) => {
   }
 };
 
+// Default route for sanity check
+app.get("/", (req, res) => {
+  res.send("✅ MERN Backend is running");
+});
+
 // Auth Routes
 app.post("/signup", async (req, res) => {
   const { email, password } = req.body;
@@ -60,7 +65,7 @@ app.post("/signup", async (req, res) => {
     if (exists) return res.status(400).json({ message: "User already exists" });
 
     const hashed = await bcrypt.hash(password, 10);
-    const user = await User.create({ email, password: hashed });
+    await User.create({ email, password: hashed });
     res.status(201).json({ message: "User created" });
   } catch (err) {
     res.status(500).json({ message: "Signup error" });
@@ -129,5 +134,5 @@ app.patch("/tasks/:id/priority", auth, async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log('Server running on http://localhost:${PORT}');
+  console.log(Server running on http://localhost:${PORT});
 });
